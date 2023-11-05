@@ -59,6 +59,6 @@ def update(frame):
 
 sc_format()
 ani = animation.FuncAnimation(fig, update,repeat=False, interval=10, frames=range(1,frames_qnt))
-ani.save('output/animation.gif')
+ani.save('videos/animation.gif')
 
 plt.show()
