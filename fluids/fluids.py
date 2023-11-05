@@ -30,17 +30,17 @@ class Fluid:
             position = particle.get_position()
             
             newx = position[0]+vel_vector[0]
-            if self.matrix.data.shape[0] <= newx or newx < 0:
+            if newx < 0 or self.matrix.data.shape[0] <= newx:
                 particle.change_velocity((-vel_vector[0], vel_vector[1], vel_vector[2]))
                 newx = position[0]
                 
             newy = position[1]+vel_vector[1]
-            if self.matrix.data.shape[1] <= newy or newy < 0:
+            if newy < 0 or self.matrix.data.shape[1] <= newy:
                 particle.change_velocity((vel_vector[0], -vel_vector[1], vel_vector[2]))
                 newy = position[1]
 
             newz = position[2]+vel_vector[2]
-            if self.matrix.data.shape[2] <= newz or newz < 0:
+            if newz < 0 or self.matrix.data.shape[2] <= newz:
                 particle.change_velocity((vel_vector[0], vel_vector[1], -vel_vector[2]))
                 newz = position[2]
             

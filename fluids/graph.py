@@ -52,13 +52,12 @@ def update(frame):
     vectors = gen(dynamic3d)
     ax.clear()
     sc_format()
-
     ax.scatter(vectors[0], vectors[1], vectors[2], color='blue', marker='o')
     
-    print("updating " + str(frame))
+    print("frame: " + str(frame))
 
 sc_format()
 ani = animation.FuncAnimation(fig, update,repeat=False, interval=10, frames=range(1,frames_qnt))
-ani.save('videos/animation.gif')
+#ani.save('videos/animation.gif')
 
 plt.show()
