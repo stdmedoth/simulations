@@ -7,9 +7,9 @@ import matplotlib.animation
 import matplotlib.pyplot as plt
 
 
-particles_qnt = 10
-xlen,ylen,zlen = 10,10,10
-
+particles_qnt = 50
+xlen,ylen,zlen = 50,50,50
+frames_qnt = 50
 
 m = Matrix((xlen,ylen,zlen))
 
@@ -21,9 +21,9 @@ f = Fluid(m)
 f.add_particles((x,y,z))
 
 
-for i in range(10):
+for i in range(frames_qnt):
     f.flow()
-    newarray = m.data.reshape((100, 10))
+    newarray = m.data.reshape((2500, 50))
     np.savetxt("data/output"+str(i)+".csv", newarray, delimiter=";")
 
 

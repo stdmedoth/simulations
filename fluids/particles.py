@@ -14,3 +14,7 @@ class Particle :
 
     def get_position(self):
         return self.vector.get_position()
+    
+    def change_velocity(self, velocity):
+        self.velocity = Velocity(velocity)
+        
