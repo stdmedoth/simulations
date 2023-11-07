@@ -2,5 +2,6 @@
 
 differential equation for fluids bodies
 
-![Simulation Gif](videos/output.gif)
+![Simulation Gif](videos/animation.gif
+)
 
