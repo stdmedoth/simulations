@@ -1,7 +1,8 @@
+import math
 import matplotlib.pyplot as plt
 
 
-class Decay:
+class RadioactiveDecay:
 
     MAX = 100
 
@@ -18,24 +19,39 @@ class Decay:
         self.dt = float(input("Time step: "))
         self.time.append(0)
 
-    def calculate(self):
+    def default_method(self):
         for i in range(self.MAX):
             self.n_atoms.append(
-                self.n_atoms[i] - (self.n_atoms[i]/self.tau) * self.dt)
+                self.n_atoms[i] - (self.n_atoms[i]/self.tau) * self.dt
+                )
+            self.time.append(self.time[i] + self.dt)
+    
+    def euler_method(self):
+        for i in range(self.MAX):
+            self.n_atoms.append(
+                self.n_atoms[0]*pow(math.e, -(self.time[i]/self.tau))
+                )
             self.time.append(self.time[i] + self.dt)
 
     def view(self):
         fig = plt.figure(figsize=(8, 6))
         ax = fig.add_subplot()
-        ax.grid()
+        self.default_method()
         ax.scatter(self.time, self.n_atoms)
+        
+        self.n_atoms = [self.n_atoms[0]]
+        self.time = [0]
+        self.euler_method()
+        ax.scatter(self.time, self.n_atoms)
+        ax.grid()
         plt.show()
 
+        
     def load(self):
         self.initialize()
-        self.calculate()
         self.view()
+        
+    
 
-
-d = Decay()
+d = RadioactiveDecay()
 d.load()
