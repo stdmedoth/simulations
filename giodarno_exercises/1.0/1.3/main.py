@@ -17,9 +17,16 @@ class FrictionalForce:
 
     def calculate(self):
         for i in range(0, (int(self.max_time/self.dt)+1)):
-            dv = self.v[i]
-            self.v.append(dv + (self.a - self.b*dv) * self.dt)
-            self.time.append(self.time[i]+self.dt)
+            iv = self.v[i] # instantaneous velocity
+            riv = (self.a - self.b*iv) # resultant instantaneous velocity 
+            dv = riv * self.dt # resultant derivative velocity
+
+            t = self.time[i]
+            dt = self.dt
+
+
+            self.v.append(iv + dv)
+            self.time.append(t + dt)
 
     def view(self):
         fig = plt.figure()
