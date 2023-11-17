@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-class IsolatedSystem:
+class IdealGasLaw:
     def __init__(self):
         pass
 
@@ -43,7 +43,7 @@ class IsolatedSystem:
         
             self.pressure.append(self.pressure[i])
             
-            dV = (self.n * self.R * iT)/self.pressure[i]
+            dV = (self.n * self.R * self.dT)/self.pressure[i]
             iV = self.volume[i] + dV
             self.volume.append(iV)
 
@@ -72,6 +72,8 @@ class IsolatedSystem:
         fig = plt.figure()
         ax = fig.add_subplot()
 
+        
+
         if y == 'volume':
             ax.scatter(self.volume, self.temperature)
         if y == 'pressure':
@@ -89,5 +91,5 @@ class IsolatedSystem:
         self.igraph(y='volume') # y = 'volume|pressure'
     
 
-isys = IsolatedSystem()
+isys = IdealGasLaw()
 isys.start()
